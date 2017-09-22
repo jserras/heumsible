@@ -1,9 +1,12 @@
+
 ## Document directory aliases
 for i in $(find ~/Documents/ -mindepth 1 -maxdepth 1 -type d);
 do
   alias w-$(basename ${i})="workspace ${i}"
 done
 
+
+### setup the workspace aliases you like
 function workspace(){
 
 # make sure workspaces don't mix
@@ -16,13 +19,13 @@ function workspace(){
 ## repository aliases
   for r in $(find $1/repos/ -mindepth 1 -maxdepth 1 -type d);
   do
-    alias r-$(basename ${r})="cd ${r}"
+    alias r-$(basename ${r})="cd ${r}; git status"
   done
 
 ## mutt mailbox aliases
   for m in $(find $1/.mutt/ -mindepth 1 -maxdepth 1 -type f -iname "*.acc");
   do
-    alias m-$(basename ${m}| cut -d . -f 1 )="mutt -F ${m}";
+    alias m-$(basename ${m}| cut -d . -f 1 )="cd $1/.mutt; mutt -F ${m}";
   done
 
 ## virtualenv aliases
@@ -33,4 +36,3 @@ function workspace(){
     fi
   done
 }
-
