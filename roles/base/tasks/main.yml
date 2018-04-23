@@ -1,0 +1,25 @@
+---
+
+- name: lets install the basic crap
+  import_tasks: tasks/install.yml
+
+- name: set default shell for new users
+  lineinfile:
+    dest: "/etc/default/useradd"
+    regexp: '^SHELL='
+    line: 'SHELL=/bin/bash'
+    state: present
+  become: yes
+
+- name: sshd config
+  lineinfile:
+  args:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "{{item.reg}}"
+    line: "{{item.line}}"
+  notify: restart sshd
+  become: yes
+  with_items:
+    - {reg: "PermitRootLogin",line: "PermitRootLogin no"}
+    - {reg: "Port ",line: "Port 22"}
+

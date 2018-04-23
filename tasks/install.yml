@@ -1,0 +1,46 @@
+---
+
+- name: make sure python-apt is installed
+  apt:
+    name: "python-apt"
+    state: present
+    force: yes
+  become: yes
+
+- name: make sure we have the needed repositories
+  apt_repository:
+    repo: "{{ item.repo }}"
+    filename: ansible_managed
+    state: present
+    update_cache: no
+  with_items: "{{ repositories }}"
+  when: repositories|length > 0
+  become: yes
+
+- name: fetch needed repository keys
+  apt_key:
+    url: "{{ item.key }}"
+    state: present
+  with_items: "{{ repositories }}"
+  when: repositories|length > 0  and item.key is defined
+  become: yes
+
+- name: install software
+  apt:
+    name: "{{ item }}"
+    state: present
+    install_recommends: yes
+    update_cache: yes
+    cache_valid_time: "0"
+    force: yes
+  with_items: "{{ soft }}"
+  become: yes
+
+- name: enable or disable services
+  service:
+    name: "{{ item.name }}"
+    enabled: "{{ item.enabled }}"
+  with_items: "{{ services }}"
+  when: services is defined
+  become: yes
+

@@ -1,0 +1,7 @@
+---
+- name: restart sshd
+  action: service name=ssh state=restarted enabled=yes
+
+- name: restart ntpd
+  action: service name=ntp state=restarted enabled=yes
+

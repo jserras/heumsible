@@ -1,0 +1,25 @@
+---
+
+- name: install default dekstop software
+  import_tasks: tasks/install.yml
+
+
+- name: check that configuration directories exist
+  file:
+    path: "{{ item.path }}"
+    state: directory
+  with_items: "{{ configurationfiles }}"
+
+- name: copy various configuration files
+  copy:
+    src: "{{ item.name }}"
+    dest: "{{ item.path }}"
+    mode: "{{ item.mode|default(omit) }}"
+  with_items: "{{ configurationfiles }}"
+
+- name: make sure workspaces is being loaded
+  lineinfile:
+    dest: "~/.bashrc"
+    line: 'if [ -f ~/.bash_workspaces.sh ]; then . ~/.bash_workspaces.sh ;fi'
+    state: present
+

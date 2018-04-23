@@ -1,0 +1,41 @@
+---
+
+repositories: []
+
+soft:
+  - "atop"
+  - "bash-completion"
+  - "bzip2"
+  - "curl"
+  - "dos2unix"
+  - "dstat"
+  - "git"
+  - "htop"
+  - "links"
+  - "lsof"
+  - "ncdu"
+  - "ntp"
+  - "openssh-server"
+  - "python-dev"
+  - "python-gtk2"
+  - "python-pip"
+  - "rsync"
+  - "screen"
+  - "sudo"
+  - "sysstat"
+  - "sysv-rc-conf"
+  - "tree"
+  - "unzip"
+  - "vim"
+  - "virtualenv"
+  - "zip"
+
+services:
+  - {name: "sshd", enabled: yes}
+  - {name: "ntp", enabled: yes}
+
+  
+locale:
+  - nl_BE.UTF-8
+  - en_US.UTF-8
+

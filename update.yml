@@ -1,0 +1,11 @@
+---
+- hosts: all
+
+  tasks:
+    - name: Update the system
+      apt:
+        upgrade: dist
+        force: yes
+        update_cache: yes
+        autoremove: yes
+      become: yes

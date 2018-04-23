@@ -1,0 +1,8 @@
+---
+
+- name: install desktop and server basics
+  hosts: all
+  roles:
+    - role: base
+    - role: desktop
+      when: '"desktop" in group_names'

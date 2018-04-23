@@ -1,0 +1,11 @@
+[all:children]
+work
+home
+
+[home]
+
+[work]
+pmouthaan-x280 ansible_host=127.0.0.1
+
+[desktop]
+pmouthaan-x280

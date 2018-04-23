@@ -1,0 +1,97 @@
+---
+
+services:
+  - name: "bitlbee"
+    enabled: "yes"
+
+repositories:
+  - name: 'bitlbee.org'
+    repo: 'deb http://code.bitlbee.org/debian/master/xenial/amd64/ ./'
+    key: 'https://code.bitlbee.org/debian/release.key'
+  - name: 'jgeboski'
+    repo: 'deb http://download.opensuse.org/repositories/home:/jgeboski/xUbuntu_16.04 ./'
+    key: 'https://jgeboski.github.io/obs.key'
+  - name: "sublime"
+    repo: "deb https://download.sublimetext.com/ apt/stable/"
+  - name: "handbrake"
+    repo: "deb http://ppa.launchpad.net/stebbins/handbrake-releases/ubuntu xenial main"
+  - name: "multisystem"
+    repo: "deb http://liveusb.info/multisystem/depot all main"
+    key: "http://liveusb.info/multisystem/depot/multisystem.asc"
+
+
+soft:
+  - "bitlbee"
+  - "bitlbee-facebook"
+  - "chromium-browser"
+  - "cifs-utils"
+  - "feh"
+  - "flashplugin-installer"
+  - "gimp"
+  - "gparted"
+  - "i3"
+  - "irssi"
+  - "keepass2"
+  - "libreoffice"
+  - "lightdm"
+  - "lightdm-gtk-greeter"
+  - "mutt"
+  - "nmap"
+  - "pidgin-sipe"
+  - "python-cheetah"
+  - "python-virtualenv"
+  - "ranger"
+  - "rdesktop"
+  - "resolvconf"
+  - "sublime-text"
+  - "vagrant"
+  - "xfce4"
+  - "xfce4-terminal"
+  - "xmms2"
+
+locale:
+  - nl_BE.UTF-8
+  - en_US.UTF-8
+
+configurationfiles:
+# sublime
+  - name: "sublime/Package Control.sublime-settings"
+    path: "~/.config/sublime-text-3/Packages/User/"
+  - name: "sublime/Preferences.sublime-settings"
+    path: "~/.config/sublime-text-3/Packages/User/"
+# mutt
+  - name: "mutt/.muttrc"
+    path: "~/"
+# bin
+  - name: "bin/doublies.sh"
+    mode: "0750"
+    path: "~/bin/"
+  - name: "bin/twat.sh"
+    mode: "0750"
+    path: "~/bin/"
+  - name: "bin/voxlayout.sh"
+    mode: "0750"
+    path: "~/bin/"
+  - name: "bin/xrandr.sh"
+    mode: "0750"
+    path: "~/bin/"
+# i3wm
+  - name: "i3wm/config"
+    path: "~/.i3/"
+  - name: "i3wm/voxbone.json"
+    path: "~/.i3/"
+  # - name: "i3wm/background.sh"
+  #   path: "~/.i3/"
+  # - name: "i3wm/i3status.sh.nomore"
+  #   path: "~/.i3/"
+  # - name: "i3wm/lockimg.sh"
+  #   path: "~/.i3/"
+  # - name: "i3wm/lock.png"
+  #   path: "~/.i3/"
+  # - name: "i3wm/python.json"
+  #   path: "~/.i3/"
+# self
+  - name: ".bash_workspaces.sh"
+    mode: "0755"
+    path: "~/"
+
