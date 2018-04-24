@@ -10,13 +10,13 @@ function workspace(){
 
   ### make sure workspaces don't mix
   for j in r m v; do
-    for i in $(alias |grep -Po " ${j}-.*?=") ; do 
+    for i in $(alias |grep -Po " ${j}-.*?=") ; do
         unalias $(echo ${i} | sed "s/.$//");
     done;
   done;
 
   ### repository aliases
-  for r in $(find $1/repos/ -mindepth 1 -maxdepth 1 -type d 2>/dev/null);
+  for r in $(find $1/repos/ -mindepth 1 -maxdepth 1 -type d -or -type l 2>/dev/null);
   do
     alias r-$(basename ${r})="cd ${r}; if [[ -d ${r}/.git ]]; then git status; fi"
   done
@@ -38,4 +38,25 @@ function workspace(){
   ### lets move to the workspace
   cd $1
 
+  ### ansible configuration per workspace
+  export ANSIBLE_CONFIG="$1/ansible.cfg"
+  export ANSIBLE_VAULT_PASSWORD_FILE="$1/.ansible_vault.txt"
+
+  alias gdrive="google-drive-ocamlfuse -label $(basename ${1}) $1/gdrive/"
+  ### some specialties
+  if [[ "$(basename $1)" == "self" ]]; then
+    alias tg="cd $1/.venv/tg/tg; ./bin/telegram-cli; cd -"
+    alias twat="source $1/.venv/twat/bin/activate; pip install -U rainbowstream ; rainbowstream"
+    alias n-music="sudo mount.cifs //noctrifius.at.heum/music /home/pmouthaan/Documents/self/mounts/music/  -ouid=pmouthaan,gid=pmouthaan,user=dirjax"
+    alias n-personal="sudo mount.cifs //noctrifius.at.heum/personal /home/pmouthaan/Documents/self/mounts/personal/  -ouid=pmouthaan,gid=pmouthaan,user=dirjax"
+    alias n-film="sudo mount.cifs //noctrifius.at.heum/film /home/pmouthaan/Documents/self/mounts/film/  -ouid=pmouthaan,gid=pmouthaan,user=dirjax"
+  fi
+
 }
+
+export -f workspace
+### and add a default
+w-voxbone
+
+export JAVA_HOME=/opt/jdk1.8.0_151/
+export PATH=$PATH:$JAVA_HOME/bin
