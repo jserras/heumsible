@@ -72,7 +72,7 @@ configurationfiles:
   - name: "bin/voxlayout.sh"
     mode: "0750"
     path: "~/bin/"
-  - name: "bin/xrandr.sh"
+  - name: "bin/setscreens.sh"
     mode: "0750"
     path: "~/bin/"
 # i3wm

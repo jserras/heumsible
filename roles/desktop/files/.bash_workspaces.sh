@@ -58,5 +58,3 @@ export -f workspace
 ### and add a default
 w-voxbone
 
-export JAVA_HOME=/opt/jdk1.8.0_151/
-export PATH=$PATH:$JAVA_HOME/bin
