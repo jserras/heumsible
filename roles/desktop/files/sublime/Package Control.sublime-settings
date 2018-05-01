@@ -7,10 +7,12 @@
 	"installed_packages":
 	[
 		"All Autocomplete",
+		"Bash Build System",
+		"Darkula Color Scheme",
 		"DiffTabs",
 		"Dracula Color Scheme",
 		"Git",
-		"Package Control",
-		"GitGutter"
+		"GitGutter",
+		"Package Control"
 	]
 }

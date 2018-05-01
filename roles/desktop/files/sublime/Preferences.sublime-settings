@@ -15,14 +15,14 @@
 	"hot_exit": true,
 	"ignored_packages":
 	[
-		"GitGutter-Edge",
 		"Vintage"
 	],
 	"save_on_focus_lost": false,
 	"scroll_past_end": false,
 	"tab_size": 2,
-	"theme": "Default.sublime-theme",
+	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
+	"tree_animation_enabled": false,
 	"trim_automatic_white_space": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_wrap": false
