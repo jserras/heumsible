@@ -18,6 +18,9 @@ repositories:
   - name: "multisystem"
     repo: "deb http://liveusb.info/multisystem/depot all main"
     key: "http://liveusb.info/multisystem/depot/multisystem.asc"
+  - name: "virtualbox"
+    repo: "deb https://download.virtualbox.org/virtualbox/debian xenial contrib"
+    key: "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
 
 
 soft:
@@ -48,6 +51,7 @@ soft:
   - "xfce4"
   - "xfce4-terminal"
   - "xmms2"
+  - "virtualbox"
 
 locale:
   - nl_BE.UTF-8
