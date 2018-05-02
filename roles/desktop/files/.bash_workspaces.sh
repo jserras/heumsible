@@ -50,5 +50,3 @@ alias tg="~/Documents/self/tg/bin/telegram-cli"
 alias twat="source ~/.venv/twat/bin/activate; pip install -U rainbowstream ; rainbowstream"
 
 export -f workspace
-### and add a default
-w-voxbone
