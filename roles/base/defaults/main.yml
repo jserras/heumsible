@@ -30,11 +30,15 @@ soft:
   - "virtualenv"
   - "zip"
 
-services:
-  - {name: "sshd", enabled: yes}
-  - {name: "ntp", enabled: yes}
+soft_deb: []
 
-  
+services:
+  - name: "sshd"
+    enabled: "yes"
+  - name: "ntp"
+    enabled: "yes"
+
+
 locale:
   - nl_BE.UTF-8
   - en_US.UTF-8

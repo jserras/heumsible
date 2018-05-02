@@ -1,7 +1,7 @@
 ---
 
 - name: install default dekstop software
-  import_tasks: tasks/install.yml
+  import_tasks: install.yml
 
 
 - name: check that configuration directories exist

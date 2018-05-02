@@ -1,7 +1,7 @@
 ---
 
 - name: lets install the basic crap
-  import_tasks: tasks/install.yml
+  import_tasks: install.yml
 
 - name: set default shell for new users
   lineinfile:

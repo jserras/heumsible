@@ -47,11 +47,14 @@ soft:
   - "rdesktop"
   - "resolvconf"
   - "sublime-text"
-  - "vagrant"
+  # - "vagrant" # --- vagrant 1.8.1 in xenial :(((
   - "xfce4"
   - "xfce4-terminal"
   - "xmms2"
   - "virtualbox"
+
+soft_deb:
+  - "https://releases.hashicorp.com/vagrant/2.0.4/vagrant_2.0.4_x86_64.deb"
 
 locale:
   - nl_BE.UTF-8

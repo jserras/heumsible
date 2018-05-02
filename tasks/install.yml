@@ -14,7 +14,7 @@
     state: present
     update_cache: no
   with_items: "{{ repositories }}"
-  when: repositories|length > 0
+  when: repositories is defined
   become: yes
 
 - name: fetch needed repository keys
@@ -22,7 +22,7 @@
     url: "{{ item.key }}"
     state: present
   with_items: "{{ repositories }}"
-  when: repositories|length > 0  and item.key is defined
+  when: repositories is defined  and item.key is defined
   become: yes
 
 - name: install software
@@ -34,6 +34,14 @@
     cache_valid_time: "0"
     force: yes
   with_items: "{{ soft }}"
+  when: soft is defined
+  become: yes
+
+- name: install deb packages from outside repositories
+  apt:
+    deb: "{{ item }}"
+  with_items: "{{ soft_deb }}"
+  when: soft_deb is defined
   become: yes
 
 - name: enable or disable services
