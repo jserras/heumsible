@@ -52,6 +52,7 @@ soft:
   - "xfce4-terminal"
   - "xmms2"
   - "virtualbox"
+  - "vlc"
 
 soft_deb:
   - "https://releases.hashicorp.com/vagrant/2.0.4/vagrant_2.0.4_x86_64.deb"

@@ -1,0 +1,33 @@
+---
+
+- name: create basic users for chosen system
+  user:
+    name: "{{ item.name }}"
+    state: present
+    uid: "{{ users[item.name].uid|default('') }}"
+    comment: "{{ users[item.name].full|default('') }}"
+    groups: "{{ users[item.name].groups|default('') }}"
+    shell: "/bin/bash"
+    update_password: on_create
+    password: "$6$CjRYHe800n$QtFtRRKlXZgmi1OBMUZy3Dps2TzBBT.4eUIbDdw.jLisH7zXQsq0QBvgB764tA8o/9qhzFfeoBqMTeM.3r9lU/"
+  with_items:
+    - "{{ hostusers }}"
+  register: usercreation
+  become: yes
+
+- name: set user to change pass next login
+  shell: chage -d 0 {{ item.name }}
+  with_items: "{{ usercreation.results }}"
+  when: item.system is defined and not item.system
+  # system var is set when the user is not found on the system
+  # this should only be done when the user is created, not when the groups are updated
+  become: yes
+
+- name: sudo rights
+  lineinfile: "dest=/etc/sudoers.d/sudo_users regexp='^{{ item.name }}' line='{{ item.name }}  {{ item.sudo}}' state=present create=yes mode=0440"
+  with_items:
+    - "{{ hostusers }}"
+  when: item.sudo is defined
+  become: yes
+
+

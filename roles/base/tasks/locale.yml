@@ -1,0 +1,30 @@
+---
+
+- name: make sure the locale exists
+  locale_gen:
+    name: en_US.UTF-8
+    state: present
+  become: yes
+
+- name: set to defaults
+  lineinfile:
+    dest:  /etc/default/locale
+    owner: root
+    group: root
+    mode: 0664
+    state: present
+    regexp: "^{{ item }}="
+    line: "{{ item }}=\"en_US.UTF-8\""
+  with_items:
+    - "LANG"
+    - "LC_ADDRESS"
+    - "LC_ALL"
+    - "LC_IDENTIFICATION"
+    - "LC_MEASUREMENT"
+    - "LC_MONETARY"
+    - "LC_NAME"
+    - "LC_NUMERIC"
+    - "LC_PAPER"
+    - "LC_TELEPHONE"
+    - "LC_TIME"
+  become: yes

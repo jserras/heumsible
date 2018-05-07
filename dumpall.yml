@@ -1,0 +1,10 @@
+---
+- name: dump all know vars
+  hosts: all
+  tasks:
+    - name: dumping all known vars to dumpall
+      template:
+        src: dumpall.j2
+        dest: ~/dumpall
+        mode: 0600
+

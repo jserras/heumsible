@@ -13,6 +13,7 @@ soft:
   - "htop"
   - "links"
   - "lsof"
+  - "lynx"
   - "ncdu"
   - "ntp"
   - "openssh-server"

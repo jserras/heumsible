@@ -1,7 +1,18 @@
 ---
 
+- name: set default shell for new users
+  lineinfile:
+    dest: "/etc/default/useradd"
+    regexp: '^SHELL='
+    line: 'SHELL=/bin/bash'
+    state: present
+  become: yes
+
 - name: lets install the basic crap
   import_tasks: install.yml
+
+- name: lets set the default locale
+  import_tasks: locale.yml
 
 - name: set default shell for new users
   lineinfile:
@@ -17,9 +28,17 @@
     dest: "/etc/ssh/sshd_config"
     regexp: "{{item.reg}}"
     line: "{{item.line}}"
+    state: present
   notify: restart sshd
   become: yes
   with_items:
     - {reg: "PermitRootLogin",line: "PermitRootLogin no"}
     - {reg: "Port ",line: "Port 22"}
 
+- name: prefer ipv4 over ipv6
+  lineinfile:
+    dest: "/etc/gai.conf"
+    regexp: 'precedence ::ffff:0:0/96'
+    line: 'precedence ::ffff:0:0/96  100'
+    state: present
+  become: yes

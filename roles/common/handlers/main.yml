@@ -1,7 +1,15 @@
 ---
 - name: restart sshd
-  action: service name=ssh state=restarted enabled=yes
+  service:
+    name: ssh
+    state: restarted
+    enabled: yes
+  become: yes
 
 - name: restart ntpd
-  action: service name=ntp state=restarted enabled=yes
+  service:
+    name: ntp
+    state: restarted
+    enabled: yes
+  become: yes
 

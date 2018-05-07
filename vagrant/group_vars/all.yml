@@ -3,10 +3,11 @@
 master_user: ansible
 
 users:
-  - name: ansible
+  ansible:
     comment: "master of puppets"
     uid: "3000"
     gid: "3000"
+
 
 
 
