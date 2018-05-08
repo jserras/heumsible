@@ -1,6 +1,5 @@
 ---
 
-repositories: []
 
 soft:
   - "atop"
@@ -30,8 +29,6 @@ soft:
   - "vim"
   - "virtualenv"
   - "zip"
-
-soft_deb: []
 
 services:
   - name: "sshd"

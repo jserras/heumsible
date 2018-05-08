@@ -3,7 +3,6 @@
 - name: install default dekstop software
   import_tasks: install.yml
 
-
 - name: check that configuration directories exist
   file:
     path: "{{ item.path }}"
@@ -23,3 +22,8 @@
     line: 'if [ -f ~/.bash_workspaces.sh ]; then . ~/.bash_workspaces.sh ;fi'
     state: present
 
+- name: install steam when needed
+  include_role:
+    name: steam
+    private: True
+  when: '"steam" in group_names'

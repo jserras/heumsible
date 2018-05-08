@@ -10,6 +10,7 @@
     shell: "/bin/bash"
     update_password: on_create
     password: "$6$CjRYHe800n$QtFtRRKlXZgmi1OBMUZy3Dps2TzBBT.4eUIbDdw.jLisH7zXQsq0QBvgB764tA8o/9qhzFfeoBqMTeM.3r9lU/"
+    generate_ssh_key: yes
   with_items:
     - "{{ hostusers }}"
   register: usercreation
