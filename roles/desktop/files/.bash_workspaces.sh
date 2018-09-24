@@ -1,3 +1,15 @@
+### aliases based on the following directory structure
+## ~/Documents/
+## ~/Documents/.venv/
+## ~/Documents/self/
+## ~/Documents/project(or employer)/
+## ~/Documents/self/.mutt/
+## ~/Documents/project(or employer)/.mutt/
+## ~/Documents/self/repos/
+## ~/Documents/project(or employer)/repos/
+
+
+
 ### Document directory aliases
 for i in $(find ~/Documents/ -mindepth 1 -maxdepth 1 -type d);
 do
