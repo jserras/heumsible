@@ -60,5 +60,6 @@ done
 
 alias tg="~/Documents/self/tg/bin/telegram-cli"
 alias twat="source ~/.venv/twat/bin/activate; pip install -U rainbowstream ; rainbowstream"
+alias pwvault='ansible-vault encrypt_string $(pwgen -Cyn 20 1)'  ## generate password and vault it
 
 export -f workspace
