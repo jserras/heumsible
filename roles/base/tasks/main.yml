@@ -11,6 +11,23 @@
 - name: lets install the basic crap
   import_tasks: install.yml
 
+- name: rng-tools config
+  lineinfile:
+    path: /etc/default/rng-tools
+    regexp: "^HRNGDEVICE=.*"
+    line: "HRNGDEVICE=/dev/random"
+    state: present
+  register: rng_config
+  when: ansible_virtualization_role == "guest"
+  become: yes
+
+- name: reload rng-tools
+  service:
+    name: rng-tools
+    state: restarted
+  when: ansible_virtualization_role == "guest" and rng_config.changed
+  become: yes
+
 - name: lets set the default locale
   import_tasks: locale.yml
 
