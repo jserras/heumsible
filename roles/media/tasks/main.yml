@@ -1,0 +1,4 @@
+---
+
+- name: install default media software
+  import_tasks: install.yml

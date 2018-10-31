@@ -1,0 +1,8 @@
+---
+
+soft:
+  - "kodi"
+
+repositories:
+  - name: 'xbmc'
+    repo: 'ppa:team-xbmc/ppa'

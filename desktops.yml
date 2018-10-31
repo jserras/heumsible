@@ -3,4 +3,12 @@
 - name: install basics for desktops
   hosts: desktop
   roles:
+
     - role: desktop
+
+    - role: gaming
+      when: '"gaming" in group_names'
+
+    - role: media
+      when: '"media" in group_names'
+
