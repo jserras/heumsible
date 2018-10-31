@@ -1,0 +1,7 @@
+---
+
+- name: install basics for all
+  hosts: all
+  roles:
+    - role: base
+

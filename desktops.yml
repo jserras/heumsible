@@ -1,0 +1,6 @@
+---
+
+- name: install basics for desktops
+  hosts: desktop
+  roles:
+    - role: desktop
