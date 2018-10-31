@@ -1,12 +1,11 @@
 ### aliases based on the following directory structure
-## ~/Documents/
-## ~/Documents/.venv/
-## ~/Documents/self/
-## ~/Documents/project(or employer)/
-## ~/Documents/project(or employer)/.mutt/
-## ~/Documents/self/repos/
-## ~/Documents/project(or employer)/repos/
 ## ~/.mutt/
+## ~/.venv/
+## ~/Documents/
+## ~/Documents/self/
+## ~/Documents/self/repos/
+## ~/Documents/project(or employer)/
+## ~/Documents/project(or employer)/repos/
 
 
 

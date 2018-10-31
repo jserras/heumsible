@@ -1,5 +1,6 @@
 ---
 
+
 - name: install default dekstop software
   import_tasks: install.yml
 
@@ -8,6 +9,7 @@
     path: "{{ item.path }}"
     state: directory
   with_items: "{{ configurationfiles }}"
+  tags: config
 
 - name: copy various configuration files
   copy:
@@ -15,15 +17,11 @@
     dest: "{{ item.path }}"
     mode: "{{ item.mode|default(omit) }}"
   with_items: "{{ configurationfiles }}"
+  tags: config
 
 - name: make sure workspaces is being loaded
   lineinfile:
     dest: "~/.bashrc"
     line: 'if [ -f ~/.bash_workspaces.sh ]; then . ~/.bash_workspaces.sh ;fi'
     state: present
-
-- name: install steam when needed
-  include_role:
-    name: steam
-    private: True
-  when: '"steam" in group_names'
+  tags: config

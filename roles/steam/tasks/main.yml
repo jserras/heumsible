@@ -1,4 +1,0 @@
----
-
-- name: install default steam software
-  import_tasks: install.yml
