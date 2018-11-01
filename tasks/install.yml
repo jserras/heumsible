@@ -7,6 +7,14 @@
     force: yes
   become: yes
 
+- name: fetch needed repository keys
+  apt_key:
+    url: "{{ item.key }}"
+    state: present
+  with_items: "{{ repositories }}"
+  when: repositories is defined  and item.key is defined
+  become: yes
+
 - name: make sure we have the needed repositories
   apt_repository:
     repo: "{{ item.repo }}"
@@ -15,14 +23,6 @@
     update_cache: no
   with_items: "{{ repositories }}"
   when: repositories is defined
-  become: yes
-
-- name: fetch needed repository keys
-  apt_key:
-    url: "{{ item.key }}"
-    state: present
-  with_items: "{{ repositories }}"
-  when: repositories is defined  and item.key is defined
   become: yes
 
 - name: install software
