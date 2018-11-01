@@ -3,6 +3,7 @@
 
 - name: install default dekstop software
   import_tasks: install.yml
+  tags: install
 
 - name: check that configuration directories exist
   file:

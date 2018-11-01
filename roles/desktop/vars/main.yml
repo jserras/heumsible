@@ -23,6 +23,9 @@ repositories:
   - name: "virtualbox"
     repo: "deb https://download.virtualbox.org/virtualbox/debian xenial contrib"
     key: "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
+  - name: "spotify"
+    repo: 'deb http://repository.spotify.com stable non-free'
+    key:  'http://keyserver.ubuntu.com/pks/lookup?op=hget&search=190C3802FF54A2688709EFAA6D3CF129'
 
 
 soft:
@@ -54,6 +57,7 @@ soft:
   - "xmms2"
   - "virtualbox"
   - "vlc"
+  - "spotify-client"
 
 soft_deb:
   - "https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.3-amd64.deb"
